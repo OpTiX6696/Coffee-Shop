@@ -25,7 +25,7 @@ class AuthError(Exception):
 !! NOTE THIS MUST BE UNCOMMENTED ON FIRST RUN
 !! Running this funciton will add one
 '''
-# db_drop_and_create_all()
+db_drop_and_create_all()
 
 # ROUTES
 '''
@@ -43,6 +43,7 @@ def get_drinks():
     try:
         drinks = Drink.query.all()
         f_drinks = [drink.short() for drink in drinks]
+        print("Gotten")
     except:
         abort(422)
         
