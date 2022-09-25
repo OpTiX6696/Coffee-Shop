@@ -102,9 +102,10 @@ def post_drink(payload):
             
         new_drink = Drink(title=title, recipe=recipe)
         new_drink.insert()
+        
     except:
         abort(422)
-    return jsonify({"success": True, "drinks": new_drink.long()})
+    return jsonify({"success": True, "drinks": [new_drink.long()]})
     
 
 '''
@@ -201,7 +202,13 @@ def unprocessable(error):
 @TODO implement error handler for 404
     error handler should conform to general task above
 '''
-
+# @app.errorhandler(403)
+# def unprocessable(error):
+#     return jsonify({
+#             "success": False,
+#             "error": 403,
+#             "message": "Unauthorised"
+#         }), 403
 
 '''
 @TODO implement error handler for AuthError
